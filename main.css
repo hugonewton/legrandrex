@@ -31,9 +31,9 @@
   }
 
   .main-cta:hover .sparkle-cta {
-    -webkit-animation: rotating360 2s linear infinite;
-    -moz-animation: rotating360 2s linear infinite;
-    -ms-animation: rotating360 2s linear infinite;
-    -o-animation: rotating360 2s linear infinite;
-    animation: rotating360 2s linear infinite;
+    -webkit-animation: rotating360 3s linear infinite;
+    -moz-animation: rotating360 3s linear infinite;
+    -ms-animation: rotating360 3s linear infinite;
+    -o-animation: rotating360 3s linear infinite;
+    animation: rotating360 3s linear infinite;
   }
