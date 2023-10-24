@@ -38,6 +38,14 @@
     animation: rotating360 3s linear infinite;
   }
 
+  .sparkle-menu {
+    -webkit-animation: rotating360 3s linear infinite;
+    -moz-animation: rotating360 3s linear infinite;
+    -ms-animation: rotating360 3s linear infinite;
+    -o-animation: rotating360 3s linear infinite;
+    animation: rotating360 3s linear infinite;
+  }
+
   /* DROP SHADOW AROUND PLAY ICON */
 
 
