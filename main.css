@@ -64,9 +64,37 @@
         -webkit-transform: translateX(-100%);
     }
   }
+  @keyframes marquee /* Safari and Chrome */ {
+      0% {
+        -webkit-transform: translateX(0);
+      }
+    100% {
+        -webkit-transform: translateX(-100%);
+    }
+  }
+  @-webkit-keyframes marquee-reverse /* Safari and Chrome */ {
+      0% {
+        -webkit-transform: translateX(-100%);
+      }
+    100% {
+        -webkit-transform: translateX(0%);
+    }
+  }
+  @keyframes marquee-reverse /* Safari and Chrome */ {
+      0% {
+        -webkit-transform: translateX(-100%);
+      }
+    100% {
+        -webkit-transform: translateX(0%);
+    }
+  }
 
   .ribon-1 {
-    animation: marquee 10s infinite linear;
-    webkit-animation: marquee 10s infinite linear;
+    animation: marquee 20s infinite linear;
+    webkit-animation: marquee 20s infinite linear;
+  }
+  .ribon-1.2 {
+    animation: marquee-reverse 20s infinite linear;
+    webkit-animation: marquee-reverse 20s infinite linear;
   }
 
