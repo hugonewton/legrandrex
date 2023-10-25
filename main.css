@@ -100,5 +100,5 @@
 
   .ribon-text {
     text-shadow: .5px .5px 0 #fff, -0.5px -0.5px 0 #fff, 0.5px -0.5px 0 #fff, -0.5px .5px 0 #fff, .5px .5px 0 #fff;
-    color: #1D1B19;
+    color: #1D1B19!important;
   }
