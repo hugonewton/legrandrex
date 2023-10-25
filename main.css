@@ -31,8 +31,7 @@
   }
 
   .main-cta:hover .sparkle-cta,
-  .sparkle-menu,
-  .spiky-circle {
+  .sparkle-menu {
     -webkit-animation: rotating360 3s linear infinite;
     -moz-animation: rotating360 3s linear infinite;
     -ms-animation: rotating360 3s linear infinite;
@@ -40,6 +39,13 @@
     animation: rotating360 3s linear infinite;
   }
 
+  .spiky-circle {
+    -webkit-animation: rotating360 30s linear infinite;
+    -moz-animation: rotating360 30s linear infinite;
+    -ms-animation: rotating360 30s linear infinite;
+    -o-animation: rotating360 30s linear infinite;
+    animation: rotating360 30s linear infinite;
+  }
 
   /* DROP SHADOW AROUND PLAY ICON */
 
