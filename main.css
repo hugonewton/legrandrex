@@ -93,7 +93,7 @@
     animation: marquee 20s infinite linear;
     webkit-animation: marquee 20s infinite linear;
   }
-  .ribon-1.2 {
+  .ribon-1._2 {
     animation: marquee-reverse 20s infinite linear;
     webkit-animation: marquee-reverse 20s infinite linear;
   }
