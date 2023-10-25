@@ -98,3 +98,7 @@
     webkit-animation: marquee-reverse 20s infinite linear;
   }
 
+  .ribon-text {
+    text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+    color: #1D1B19;
+  }
