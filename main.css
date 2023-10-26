@@ -107,6 +107,10 @@
   .event-txt ul {
     list-style: none;
   }
+  
+  .event-tx ul li {
+    position: relative;
+  }
 
   .event-txt ul li::before {
     content: '';
