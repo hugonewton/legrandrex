@@ -5,9 +5,9 @@ console.log("OKAYYY")
 // RANDOMLY PLACE ITEMS
 ;(() => {
     "use strict";
-    const TRIES_PER_BOX = 1;
+    const TRIES_PER_BOX = 10;
     const randUint = range => Math.random() * range | 0;
-    const placing  = [...document.querySelectorAll(".people-wrapper")].map(el => Bounds(el, 5));
+    const placing  = [...document.querySelectorAll(".people-wrapper")].map(el => Bounds(el, 50));
     const fitted = [];
     const areaToFit = Bounds();
     var maxTries = TRIES_PER_BOX * placing.length;
