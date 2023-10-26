@@ -5,7 +5,7 @@ console.log("OKAYYY")
 // RANDOMLY PLACE ITEMS
 ;(() => {
     "use strict";
-    const TRIES_PER_BOX = 50;
+    const TRIES_PER_BOX = 500;
     const randUint = range => Math.random() * range | 0;
     const placing  = [...document.querySelectorAll(".people-wrapper")].map(el => Bounds(el, 5));
     const fitted = [];
