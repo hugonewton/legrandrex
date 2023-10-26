@@ -107,11 +107,16 @@
   .event-txt ul {
     list-style: none;
     padding-left: 30px;
+    margin-bottom: 0;
   }
 
   .event-txt ul li {
     position: relative;
     margin-bottom: 0.3em;
+  }
+
+  .event-txt ul li::last-child {
+    margin-bottom: 0;
   }
 
   .event-txt ul li::before {
