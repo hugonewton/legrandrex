@@ -144,4 +144,9 @@
   font-size: xx-large;
   top: 0px;
   left: 0px;
+  opacity: 0;
+}
+
+.people-wrapper.placed {
+  opacity: 1;
 }
