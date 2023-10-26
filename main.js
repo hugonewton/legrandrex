@@ -7,7 +7,7 @@ console.log("OKAYYY")
     "use strict";
     const TRIES_PER_BOX = 10;
     const randUint = range => Math.random() * range | 0;
-    const placing  = [...document.querySelectorAll(".people-wrapper")].map(el => Bounds(el, 50));
+    const placing  = [...document.querySelectorAll(".people-wrapper")].map(el => Bounds(el, 25));
     const fitted = [];
     const areaToFit = Bounds();
     var maxTries = TRIES_PER_BOX * placing.length;
