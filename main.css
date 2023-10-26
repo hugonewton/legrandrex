@@ -111,6 +111,7 @@
 
   .event-txt ul li {
     position: relative;
+    margin-bottom: 0.3em;
   }
 
   .event-txt ul li::before {
