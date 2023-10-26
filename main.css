@@ -98,11 +98,16 @@
     webkit-animation: marquee-reverse 30s infinite linear;
   }
 
-  .ribon-text,
-  .people-name {
+  .ribon-text {
     text-shadow: .5px .5px 0 #fff, -0.5px -0.5px 0 #fff, 0.5px -0.5px 0 #fff, -0.5px .5px 0 #fff, .5px .5px 0 #fff;
     color: #1D1B19!important;
   }
+
+  .people-name {
+    text-shadow: .5px .5px 0 #fff, -0.5px -0.5px 0 #fff, 0.5px -0.5px 0 #fff, -0.5px .5px 0 #fff, .5px .5px 0 #fff;
+    color: #D0BFA5!important;
+  }
+
 
 
   .event-txt ul {
