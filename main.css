@@ -138,5 +138,10 @@
 }
 
 .people-wrapper {
+  position: absolute;
+  margin: 2;
+  border: 1px solid black;
+  font-size: xx-large;
+  top: 0px;
   left: 0pc;
 }
