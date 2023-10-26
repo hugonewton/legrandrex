@@ -155,3 +155,7 @@
 .people-wrapper.placed {
   opacity: 1;
 }
+
+.people-name {
+  max-width: min-content;
+}
