@@ -2,7 +2,7 @@ console.log("OKAYYY")
 
 
 
-RANDOMLY PLACE ITEMS
+// RANDOMLY PLACE ITEMS
 ;(() => {
     "use strict";
     const TRIES_PER_BOX = 1;
