@@ -139,26 +139,29 @@ function getRandomPositionWithLimit($container, $element, maxTries, maxOverlap, 
 
 
 
-  // Get the parent div with the class "logos-ribbon-item-wrapper"
-const wrapper = document.querySelector(".logos-ribon-item-wrapper");
-
-// Get all the child elements with the class "logo-partner"
-const logoPartners = Array.from(wrapper.querySelectorAll(".logo-partner"));
+// Get all the divs with the class "logos-ribbon-item-wrapper"
+const wrappers = document.querySelectorAll(".logos-ribon-item-wrapper");
 
 // Function to generate a random order value within the range of the number of images
 function getRandomOrder(max) {
   return Math.floor(Math.random() * max);
 }
 
-// Randomize the order of the images
-const imageCount = logoPartners.length;
-const orderValues = Array.from({ length: imageCount }, (_, index) => index);
-for (let i = 0; i < imageCount; i++) {
-  const randomIndex = getRandomOrder(imageCount);
-  [orderValues[i], orderValues[randomIndex]] = [orderValues[randomIndex], orderValues[i]];
-}
+wrappers.forEach((wrapper) => {
+  // Get all the child elements with the class "logo-partner" within the current wrapper
+  const logoPartners = Array.from(wrappers.querySelectorAll(".logo-partner"));
 
-// Apply the random order values to the images
-logoPartners.forEach((logo, index) => {
-  logo.style.order = orderValues[index];
+  // Randomize the order of the images
+  const imageCount = logoPartners.length;
+  const orderValues = Array.from({ length: imageCount }, (_, index) => index);
+  for (let i = 0; i < imageCount; i++) {
+    const randomIndex = getRandomOrder(imageCount);
+    [orderValues[i], orderValues[randomIndex]] = [orderValues[randomIndex], orderValues[i]];
+  }
+
+  // Apply the random order values to the images
+  logoPartners.forEach((logo, index) => {
+    logo.style.order = orderValues[index];
+  });
+
 });
