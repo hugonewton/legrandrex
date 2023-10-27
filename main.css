@@ -199,3 +199,9 @@
       opacity: 0;
   }
 }
+
+
+.timeline-progress-active {
+  bottom: calc(50vh - 20px);
+ 
+}
