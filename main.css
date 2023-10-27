@@ -189,33 +189,11 @@
   0% {
       opacity: 1;
   }
-  100% {
-      opacity: 0;
+  49% {
+    opacity: 1;
   }
-}
-
- /* Vendor-prefixed syntax for older browsers */
- @-webkit-keyframes blink {
-  0% {
-      opacity: 1;
-  }
-  100% {
-      opacity: 0;
-  }
-}
-
-@-moz-keyframes blink {
-  0% {
-      opacity: 1;
-  }
-  100% {
-      opacity: 0;
-  }
-}
-
-@-o-keyframes blink {
-  0% {
-      opacity: 1;
+  50% { 
+    opacity: 0
   }
   100% {
       opacity: 0;
