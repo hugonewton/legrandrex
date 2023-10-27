@@ -47,6 +47,14 @@
     animation: rotating360 30s linear infinite;
   }
 
+  .sparkle-contact {
+    -webkit-animation: rotating360 30s linear infinite;
+    -moz-animation: rotating360 30s linear infinite;
+    -ms-animation: rotating360 30s linear infinite;
+    -o-animation: rotating360 30s linear infinite;
+    animation: rotating360 30s linear infinite;
+  }
+
   /* DROP SHADOW AROUND PLAY ICON */
 
 
