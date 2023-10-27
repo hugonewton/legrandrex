@@ -138,8 +138,8 @@
 
 
 
-.not-placed {
-  /* border: 1px solid red!important; */
+.people-wrapper.not-placed {
+  opacity: 0;
 }
 
 .people-wrapper {
