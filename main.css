@@ -149,12 +149,12 @@
   font-size: xx-large;
   top: 0px;
   left: 0px;
-  opacity: 0;
+  /* opacity: 0; */
 }
 
-.people-wrapper.placed {
+/* .people-wrapper.placed {
   opacity: 1;
-}
+} */
 
 .people-name {
   max-width: min-content;
