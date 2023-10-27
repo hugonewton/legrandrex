@@ -76,8 +76,8 @@ function getRandomPositionWithLimit($container, $element, maxTries, maxOverlap, 
       });
   
       if (
-        !checkOverlapWithMax($element, $container.find(".people-wrapper").not($element), maxOverlap) &&
-        !checkOverlapWithMiddleBlock($element, $middleBlkTxt)
+        !checkOverlap($element, $container.find(".people-wrapper").not($element), maxOverlap) &&
+        !checkOverlap($element, $middleBlkTxt, maxOverlap)
       ) {
         return; // Positioning successful
       }
@@ -88,22 +88,6 @@ function getRandomPositionWithLimit($container, $element, maxTries, maxOverlap, 
     // If maximum tries reached, add a class to the element
     $element.addClass("not-placed");
     console.warn("Maximum tries reached, positioning may not be optimal.");
-  }
-  
-  function checkOverlapWithMiddleBlock($element, $middleBlkTxt) {
-    var elementRect = $element[0].getBoundingClientRect();
-    var middleBlockRect = $middleBlkTxt[0].getBoundingClientRect();
-  
-    if (
-      elementRect.left < middleBlockRect.right &&
-      elementRect.right > middleBlockRect.left &&
-      elementRect.top < middleBlockRect.bottom &&
-      elementRect.bottom > middleBlockRect.top
-    ) {
-      return true; // Overlapping with middle block
-    }
-  
-    return false; // Not overlapping
   }
   
   $(document).ready(function() {
@@ -128,5 +112,6 @@ function getRandomPositionWithLimit($container, $element, maxTries, maxOverlap, 
       getRandomPositionWithLimit($container, $(element), 100, maxOverlap, $middleBlkTxt);
     });
   });
+  
 
 
