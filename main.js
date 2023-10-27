@@ -132,3 +132,33 @@ function getRandomPositionWithLimit($container, $element, maxTries, maxOverlap, 
   
 
 
+
+// =================
+// RANDOMIZE THE APPEARANCE OF LOGOS
+// =================
+
+
+
+  // Get the parent div with the class "logos-ribbon-item-wrapper"
+const wrapper = document.querySelector(".logos-ribbon-item-wrapper");
+
+// Get all the child elements with the class "logo-partner"
+const logoPartners = Array.from(wrapper.querySelectorAll(".logo-partner"));
+
+// Function to generate a random order value within the range of the number of images
+function getRandomOrder(max) {
+  return Math.floor(Math.random() * max);
+}
+
+// Randomize the order of the images
+const imageCount = logoPartners.length;
+const orderValues = Array.from({ length: imageCount }, (_, index) => index);
+for (let i = 0; i < imageCount; i++) {
+  const randomIndex = getRandomOrder(imageCount);
+  [orderValues[i], orderValues[randomIndex]] = [orderValues[randomIndex], orderValues[i]];
+}
+
+// Apply the random order values to the images
+logoPartners.forEach((logo, index) => {
+  logo.style.order = orderValues[index];
+});
