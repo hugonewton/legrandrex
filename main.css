@@ -138,14 +138,14 @@
 
 
 
-.placed {
+.not-placed {
   /* border: 1px solid red!important; */
 }
 
 .people-wrapper {
   position: absolute;
   margin: 2px;
-  /* border: 1px solid black; */
+  border: 1px solid black;
   font-size: xx-large;
   top: 0px;
   left: 0px;
