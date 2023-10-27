@@ -116,7 +116,7 @@ function getRandomPositionWithLimit($container, $element, maxTries, maxOverlap, 
     var maxOverlap;
   
     if (screenWidth < 768) {
-      maxOverlap = 5;
+      maxOverlap = 300;
     } else if (screenWidth >= 768 && screenWidth < 1024) {
       maxOverlap = 10;
     } else if (screenWidth >= 1024 && screenWidth < 1440) {
