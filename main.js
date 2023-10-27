@@ -140,7 +140,7 @@ function getRandomPositionWithLimit($container, $element, maxTries, maxOverlap, 
 
 
   // Get the parent div with the class "logos-ribbon-item-wrapper"
-const wrapper = document.querySelector(".logos-ribbon-item-wrapper");
+const wrapper = document.querySelector(".logos-ribon-item-wrapper");
 
 // Get all the child elements with the class "logo-partner"
 const logoPartners = Array.from(wrapper.querySelectorAll(".logo-partner"));
