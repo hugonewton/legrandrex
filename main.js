@@ -116,13 +116,13 @@ function getRandomPositionWithLimit($container, $element, maxTries, maxOverlap, 
     var maxOverlap;
   
     if (screenWidth < 768) {
-      maxOverlap = 300;
+      maxOverlap = 5;
     } else if (screenWidth >= 768 && screenWidth < 1024) {
-      maxOverlap = 10;
+      maxOverlap = 5;
     } else if (screenWidth >= 1024 && screenWidth < 1440) {
-      maxOverlap = 15;
+      maxOverlap = 5;
     } else {
-      maxOverlap = 20;
+      maxOverlap = 5;
     }
   
     $elements.each(function(index, element) {
