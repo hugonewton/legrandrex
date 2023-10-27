@@ -149,7 +149,7 @@ function getRandomOrder(max) {
 
 wrappers.forEach((wrapper) => {
   // Get all the child elements with the class "logo-partner" within the current wrapper
-  const logoPartners = Array.from(wrappers.querySelectorAll(".logo-partner"));
+  const logoPartners = Array.from(wrapper.querySelectorAll(".logo-partner"));
 
   // Randomize the order of the images
   const imageCount = logoPartners.length;
