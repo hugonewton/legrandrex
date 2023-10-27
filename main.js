@@ -1,6 +1,24 @@
 console.log("OKAYYY")
 
 
+// ==========
+// CURSOR
+// ==========
+
+
+const cursor = document.querySelector(".cursor");
+const cursorHoverElements = document.querySelectorAll(".cursor-hover");
+
+cursorHoverElements.forEach((element) => {
+  element.addEventListener("mouseenter", () => {
+    cursor.classList.add("active");
+  });
+
+  element.addEventListener("mouseleave", () => {
+    cursor.classList.remove("active");
+  });
+});
+
 
 // RANDOMLY PLACE ITEMS
 // ;(() => {
