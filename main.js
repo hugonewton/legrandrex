@@ -61,7 +61,7 @@ console.log("OKAYYY")
 //     })();
 
 
-function getRandomPositionWithLimit($container, $element, maxTries, maxOverlap, $middleBlkTxt) {
+function getRandomPositionWithLimit($container, $element, maxTries, maxOverlap) {
     var containerWidth = $container.width() - $element.width();
     var containerHeight = $container.height() - $element.height();
     var tries = 0;
@@ -75,10 +75,7 @@ function getRandomPositionWithLimit($container, $element, maxTries, maxOverlap, 
         top: top + "px",
       });
   
-      if (
-        !checkOverlapWithMax($element, $container.find(".people-wrapper").not($element), maxOverlap) &&
-        !checkOverlapWithMiddleBlock($element, $middleBlkTxt)
-      ) {
+      if (!checkOverlapWithMax($element, $container.find(".people-wrapper").not($element), maxOverlap)) {
         return; // Positioning successful
       }
   
@@ -90,17 +87,19 @@ function getRandomPositionWithLimit($container, $element, maxTries, maxOverlap, 
     console.warn("Maximum tries reached, positioning may not be optimal.");
   }
   
-  function checkOverlapWithMiddleBlock($element, $middleBlkTxt) {
+  function checkOverlapWithMax($element, elements, maxOverlap) {
     var elementRect = $element[0].getBoundingClientRect();
-    var middleBlockRect = $middleBlkTxt[0].getBoundingClientRect();
   
-    if (
-      elementRect.left < middleBlockRect.right &&
-      elementRect.right > middleBlockRect.left &&
-      elementRect.top < middleBlockRect.bottom &&
-      elementRect.bottom > middleBlockRect.top
-    ) {
-      return true; // Overlapping with middle block
+    for (var i = 0; i < elements.length; i++) {
+      var otherRect = elements[i].getBoundingClientRect();
+      if (
+        elementRect.left < otherRect.right + maxOverlap &&
+        elementRect.right > otherRect.left - maxOverlap &&
+        elementRect.top < otherRect.bottom + maxOverlap &&
+        elementRect.bottom > otherRect.top - maxOverlap
+      ) {
+        return true; // Overlapping
+      }
     }
   
     return false; // Not overlapping
@@ -109,23 +108,10 @@ function getRandomPositionWithLimit($container, $element, maxTries, maxOverlap, 
   $(document).ready(function() {
     var $container = $(".section-people");
     var $elements = $container.find(".people-wrapper");
-    var $middleBlkTxt = $(".middle-blk-txt"); // Replace with your selector for the middle block
-  
-    var screenWidth = window.innerWidth;
-    var maxOverlap;
-  
-    if (screenWidth < 768) {
-      maxOverlap = 50;
-    } else if (screenWidth >= 768 && screenWidth < 1024) {
-      maxOverlap = 50;
-    } else if (screenWidth >= 1024 && screenWidth < 1440) {
-      maxOverlap = 50;
-    } else {
-      maxOverlap = 50;
-    }
+    var maxOverlap = 10; // Adjust the value to control the maximum allowed overlap
   
     $elements.each(function(index, element) {
-      getRandomPositionWithLimit($container, $(element), 100, maxOverlap, $middleBlkTxt);
+      getRandomPositionWithLimit($container, $(element), 100, maxOverlap);
     });
   });
 
