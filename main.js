@@ -20,6 +20,22 @@ cursorHoverElements.forEach((element) => {
 });
 
 
+// ==========
+// GENERATE RANDOM ANIMATION DELAY FOR THE IMAGES ".people-img"
+// ==========
+// Get all elements with the class "people-img"
+const peopleImages = document.querySelectorAll('.people-img');
+        
+// Function to generate random animation-delay values
+function generateRandomAnimationDelays() {
+    return Math.random() * 2 + 's'; // Random delay between 0s and 2s
+}
+
+// Apply random animation-delay values to each element
+peopleImages.forEach((img) => {
+    img.style.animationDelay = generateRandomAnimationDelays();
+});
+
 // RANDOMLY PLACE ITEMS
 // ;(() => {
 //     "use strict";
@@ -78,75 +94,82 @@ cursorHoverElements.forEach((element) => {
 //     }
 //     })();
 
-function getRandomPositionWithLimit($container, $element, maxTries, maxOverlap, $middleBlkTxt) {
-    var containerWidth = $container.width() - $element.width();
-    var containerHeight = $container.height() - $element.height();
-    var tries = 0;
-  
-    while (tries < maxTries) {
-      var left = Math.floor(Math.random() * containerWidth);
-      var top = Math.floor(Math.random() * containerHeight);
-  
-      $element.css({
-        left: left + "px",
-        top: top + "px",
-      });
-  
-      if (
-        !checkOverlap($element, $container.find(".people-wrapper").not($element), maxOverlap) &&
-        !checkOverlap($element, $middleBlkTxt, maxOverlap)
-      ) {
-        return; // Positioning successful
-      }
-  
-      tries++;
-    }
-  
-    // If maximum tries reached, add a class to the element
-    $element.addClass("not-placed");
-    console.warn("Maximum tries reached, positioning may not be optimal.");
-  }
-  
-  function checkOverlap($element, elements, maxOverlap) {
-    var elementRect = $element[0].getBoundingClientRect();
-  
-    for (var i = 0; i < elements.length; i++) {
-      var otherRect = elements[i].getBoundingClientRect();
-      if (
-        elementRect.left < otherRect.right + maxOverlap &&
-        elementRect.right > otherRect.left - maxOverlap &&
-        elementRect.top < otherRect.bottom + maxOverlap &&
-        elementRect.bottom > otherRect.top - maxOverlap
-      ) {
-        return true; // Overlapping
-      }
-    }
-  
-    return false; // Not overlapping
-  }
-  
-  $(document).ready(function() {
-    var $container = $(".section-people");
-    var $elements = $container.find(".people-wrapper");
-    var $middleBlkTxt = $(".middle-blk-txt");
-  
-    var screenWidth = window.innerWidth;
-    var maxOverlap;
-  
-    if (screenWidth < 768) {
-      maxOverlap = 5;
-    } else if (screenWidth >= 768 && screenWidth < 1024) {
-      maxOverlap = 5;
-    } else if (screenWidth >= 1024 && screenWidth < 1440) {
-      maxOverlap = 5;
-    } else {
-      maxOverlap = 5;
-    }
-  
-    $elements.each(function(index, element) {
-      getRandomPositionWithLimit($container, $(element), 100, maxOverlap, $middleBlkTxt);
-    });
+
+$(document).ready(function() {
+    setTimeout(function() {
+        function getRandomPositionWithLimit($container, $element, maxTries, maxOverlap, $middleBlkTxt) {
+            var containerWidth = $container.width() - $element.width();
+            var containerHeight = $container.height() - $element.height();
+            var tries = 0;
+          
+            while (tries < maxTries) {
+              var left = Math.floor(Math.random() * containerWidth);
+              var top = Math.floor(Math.random() * containerHeight);
+          
+              $element.css({
+                left: left + "px",
+                top: top + "px",
+              });
+          
+              if (
+                !checkOverlap($element, $container.find(".people-wrapper").not($element), maxOverlap) &&
+                !checkOverlap($element, $middleBlkTxt, maxOverlap)
+              ) {
+                return; // Positioning successful
+              }
+          
+              tries++;
+            }
+          
+            // If maximum tries reached, add a class to the element
+            $element.addClass("not-placed");
+            console.warn("Maximum tries reached, positioning may not be optimal.");
+          }
+          
+          function checkOverlap($element, elements, maxOverlap) {
+            var elementRect = $element[0].getBoundingClientRect();
+          
+            for (var i = 0; i < elements.length; i++) {
+              var otherRect = elements[i].getBoundingClientRect();
+              if (
+                elementRect.left < otherRect.right + maxOverlap &&
+                elementRect.right > otherRect.left - maxOverlap &&
+                elementRect.top < otherRect.bottom + maxOverlap &&
+                elementRect.bottom > otherRect.top - maxOverlap
+              ) {
+                return true; // Overlapping
+              }
+            }
+          
+            return false; // Not overlapping
+          }
+          
+          $(document).ready(function() {
+            var $container = $(".section-people");
+            var $elements = $container.find(".people-wrapper");
+            var $middleBlkTxt = $(".middle-blk-txt");
+          
+            var screenWidth = window.innerWidth;
+            var maxOverlap;
+          
+            if (screenWidth < 768) {
+              maxOverlap = 5;
+            } else if (screenWidth >= 768 && screenWidth < 1024) {
+              maxOverlap = 5;
+            } else if (screenWidth >= 1024 && screenWidth < 1440) {
+              maxOverlap = 5;
+            } else {
+              maxOverlap = 5;
+            }
+          
+            $elements.each(function(index, element) {
+              getRandomPositionWithLimit($container, $(element), 100, maxOverlap, $middleBlkTxt);
+            });
+          });
+    }, 3000); // Delay set to 0 milliseconds, but the code will wait for the document to be fully loaded
   });
+
+
   
 
 
