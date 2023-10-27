@@ -102,6 +102,10 @@
   animation: marquee 30s infinite linear;
   webkit-animation: marquee 30s infinite linear;
 }
+.logos-ribon-item-wrapper:last-child {
+  animation: marquee-reverse 30s infinite linear;
+  webkit-animation: marquee-reverse 30s infinite linear;
+}
 
   .ribon-text {
     text-shadow: .5px .5px 0 #fff, -0.5px -0.5px 0 #fff, 0.5px -0.5px 0 #fff, -0.5px .5px 0 #fff, .5px .5px 0 #fff;
