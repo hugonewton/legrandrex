@@ -60,7 +60,6 @@ console.log("OKAYYY")
 //     }
 //     })();
 
-
 function getRandomPositionWithLimit($container, $element, maxTries, maxOverlap, $middleBlkTxt) {
     var containerWidth = $container.width() - $element.width();
     var containerHeight = $container.height() - $element.height();
@@ -88,6 +87,24 @@ function getRandomPositionWithLimit($container, $element, maxTries, maxOverlap, 
     // If maximum tries reached, add a class to the element
     $element.addClass("not-placed");
     console.warn("Maximum tries reached, positioning may not be optimal.");
+  }
+  
+  function checkOverlap($element, elements, maxOverlap) {
+    var elementRect = $element[0].getBoundingClientRect();
+  
+    for (var i = 0; i < elements.length; i++) {
+      var otherRect = elements[i].getBoundingClientRect();
+      if (
+        elementRect.left < otherRect.right + maxOverlap &&
+        elementRect.right > otherRect.left - maxOverlap &&
+        elementRect.top < otherRect.bottom + maxOverlap &&
+        elementRect.bottom > otherRect.top - maxOverlap
+      ) {
+        return true; // Overlapping
+      }
+    }
+  
+    return false; // Not overlapping
   }
   
   $(document).ready(function() {
