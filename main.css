@@ -176,3 +176,48 @@
 .people-name {
   max-width: min-content;
 }
+
+.people-img {
+  animation: blink 1s infinite alternate;
+  /* Vendor-prefixed syntax for older browsers */
+  -webkit-animation: blink 1s infinite alternate;
+  -moz-animation: blink 1s infinite alternate;
+  -o-animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+  0% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  }
+}
+
+ /* Vendor-prefixed syntax for older browsers */
+ @-webkit-keyframes blink {
+  0% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  }
+}
+
+@-moz-keyframes blink {
+  0% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  }
+}
+
+@-o-keyframes blink {
+  0% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  }
+}
