@@ -229,3 +229,7 @@
   bottom: 5px;
   left: -8px;
 }
+
+.radio-btn-field .w--redirected-checked + .w-form-label {
+  opacity: 1;
+}
