@@ -205,3 +205,27 @@
   bottom: calc(50vh - 20px);
  
 }
+
+
+.form-h3-wrapper:before, .form-h3-wrapper:after {
+  border: 1px solid;
+}
+
+.form-h3-wrapper:before, .form-h3-wrapper:after {
+  content: "";
+  position: absolute;  
+}
+
+.form-h3-wrapper:before {
+  top: -5px;
+  right: 2px;
+  bottom: -5px;
+  left: 2px;
+}
+
+.form-h3-wrapper:after {
+  top: 2px;
+  right: -5px;
+  bottom: 2px;
+  left: -5px;
+}
