@@ -242,7 +242,7 @@ input:focus{
     -webkit-box-shadow: none;
 }
 
-.w-input[readonly] {
+.w-input[readonly],
+.flatpickr-input[readonly] {
   background-color: inherit;
-
 }
