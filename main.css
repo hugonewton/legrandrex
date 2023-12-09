@@ -241,3 +241,8 @@ input:focus{
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
 }
+
+.w-input[readonly] {
+  background-color: inherit;
+
+}
