@@ -166,7 +166,7 @@ $(document).ready(function() {
               getRandomPositionWithLimit($container, $(element), 100, maxOverlap, $middleBlkTxt);
             });
           });
-    }, 3000); // Delay set to 0 milliseconds, but the code will wait for the document to be fully loaded
+    }, 3000); // Delay set to 3000 milliseconds, but the code will wait for the document to be fully loaded
   });
 
 
