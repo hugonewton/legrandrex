@@ -208,7 +208,7 @@
 
 
 .form-h3-wrapper:before, .form-h3-wrapper:after {
-  border: 1px solid;
+  border: 1px solid var(--champagne);
 }
 
 .form-h3-wrapper:before, .form-h3-wrapper:after {
