@@ -39,7 +39,8 @@
     animation: rotating360 3s linear infinite;
   }
 
-  .spiky-circle {
+  .spiky-circle,
+  .salle-seprator-svg {
     -webkit-animation: rotating360 30s linear infinite;
     -moz-animation: rotating360 30s linear infinite;
     -ms-animation: rotating360 30s linear infinite;
@@ -245,4 +246,5 @@ input:focus{
 .w-input[readonly],
 .flatpickr-input[readonly] {
   background-color: inherit;
+  cursor: inherit;
 }
