@@ -272,3 +272,13 @@ input:focus{
   bottom: 2px;
   left: -5px;
 }
+
+.salle-7 .macaron-checked svg {
+  color: var(--salle-7-accent);
+}
+
+.salle-7 .projection-h3-wrapper,
+.projection-h3-wrapper:before,
+.projection-h3-wrapper:after {
+  border-color: var(--salle-7-accent);
+}
