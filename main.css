@@ -275,11 +275,7 @@ input:focus{
 
 
 
-.salle-7 .projection-h3-wrapper,
-.projection-h3-wrapper:before,
-.projection-h3-wrapper:after {
-  border-color: var(--salle-7-accent);
-}
+
 
 .slider-salle .w-slider-arrow-left, 
 .slider-salle .w-slider-arrow-right {
@@ -288,8 +284,48 @@ input:focus{
 
 /* COLORS FOR THE ROOMS */
 
+body.accent-grande .projection-h3-wrapper, 
+body.accent-grande .projection-h3-wrapper:before, 
+body.accent-grande .projection-h3-wrapper:after{
+  border-color: var(--salle-grande);
+}
+body.accent-hall .projection-h3-wrapper, 
+body.accent-hall .projection-h3-wrapper:before, 
+body.accent-hall .projection-h3-wrapper:after{
+  border-color: var(--salle-hall);
+}
+body.accent-club .projection-h3-wrapper, 
+body.accent-club .projection-h3-wrapper:before, 
+body.accent-club .projection-h3-wrapper:after{
+  border-color: var(--salle-club);
+}
+body.accent-2 .projection-h3-wrapper, 
+body.accent-2 .projection-h3-wrapper:before, 
+body.accent-2 .projection-h3-wrapper:after{
+  border-color: var(--salle-3-accent);
+}
+body.accent-3 .projection-h3-wrapper, 
+body.accent-3 .projection-h3-wrapper:before, 
+body.accent-3 .projection-h3-wrapper:after{
+  border-color: var(--salle-3-accent);
+}
+body.accent-4 .projection-h3-wrapper, 
+body.accent-4 .projection-h3-wrapper:before, 
+body.accent-4 .projection-h3-wrapper:after{
+  border-color: var(--salle-4-accent);
+}
+body.accent-5 .projection-h3-wrapper, 
+body.accent-5 .projection-h3-wrapper:before, 
+body.accent-5 .projection-h3-wrapper:after{
+  border-color: var(--salle-5-accent);
+}
 body.accent-6 .projection-h3-wrapper, 
 body.accent-6 .projection-h3-wrapper:before, 
 body.accent-6 .projection-h3-wrapper:after{
   border-color: var(--salle-6-accent);
+}
+body.accent-7 .projection-h3-wrapper, 
+body.accent-7 .projection-h3-wrapper:before, 
+body.accent-7 .projection-h3-wrapper:after{
+  border-color: var(--salle-7-accent);
 }
