@@ -282,3 +282,12 @@ input:focus{
 .projection-h3-wrapper:after {
   border-color: var(--salle-7-accent);
 }
+
+
+/* COLORS FOR THE ROOMS */
+
+body.accent-6 .projection-h3-wrapper, 
+body.accent-6 .projection-h3-wrapper:before, 
+body.accent-6 .projection-h3-wrapper:after{
+  border-color: var(--salle-6-accent);
+}
