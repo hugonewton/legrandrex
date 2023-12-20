@@ -281,6 +281,10 @@ input:focus{
   border-color: var(--salle-7-accent);
 }
 
+.slider-salle .w-slider-arrow-left, 
+.slider-salle .w-slider-arrow-right {
+  color: inherit;
+}
 
 /* COLORS FOR THE ROOMS */
 
