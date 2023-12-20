@@ -23,6 +23,8 @@ cursorHoverElements.forEach((element) => {
 // ==========
 // GENERATE RANDOM ANIMATION DELAY FOR THE IMAGES ".people-img"
 // ==========
+
+
 // Get all elements with the class "people-img"
 const peopleImages = document.querySelectorAll('.people-img');
         
@@ -206,3 +208,35 @@ wrappers.forEach((wrapper) => {
   });
 
 });
+
+
+
+
+
+// =================
+// SCRIPT TO OPEN A NEW URL AFTER SUBMITTIMG FORM
+// =================
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // Assuming your form has an ID of "yourForm" and the redirect URL is stored in the "custom-redirect" attribute
+    var form = document.getElementById('lead-magnet-form');
+
+    form.addEventListener('submit', function (event) {
+      // Get the form's action (redirect URL)
+      var redirectUrl = form.getAttribute('custom-redirect');
+
+      // Open the redirect URL in a new tab after a slight delay to allow the form to be submitted
+      setTimeout(function () {
+        window.open(redirectUrl, '_blank');
+      }, 2000); // Adjust the delay as needed (in milliseconds)
+
+      // Optionally, you can submit the form data asynchronously if needed
+      // Example using fetch API:
+      // fetch(form.getAttribute('action'), {
+      //   method: form.getAttribute('method'),
+      //   body: new FormData(form),
+      // });
+
+      // The form will be submitted as usual
+    });
+  });
