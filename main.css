@@ -328,3 +328,8 @@ body.accent-7 .projection-h3-wrapper:before,
 body.accent-7 .projection-h3-wrapper:after{
   border-color: var(--salle-7-accent);
 }
+body.accent-main .projection-h3-wrapper, 
+body.accent-main .projection-h3-wrapper:before, 
+body.accent-main .projection-h3-wrapper:after{
+  border-color: var(--salle-main-accent);
+}
