@@ -333,3 +333,8 @@ body.accent-main .projection-h3-wrapper:before,
 body.accent-main .projection-h3-wrapper:after{
   border-color: var(--salle-main-accent);
 }
+
+
+.section-video .video-embed {
+  padding-top: none;
+}
