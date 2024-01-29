@@ -159,10 +159,12 @@ wrappers.forEach((wrapper) => {
 // SCRIPT TO OPEN A NEW URL AFTER SUBMITTIMG FORM
 // =================
 
-  document.addEventListener('DOMContentLoaded', function () {
-    // Assuming your form has an ID of "yourForm" and the redirect URL is stored in the "custom-redirect" attribute
-    var form = document.getElementById('lead-magnet-form');
+document.addEventListener('DOMContentLoaded', function () {
+  // Check if the form element with ID "lead-magnet-form" exists
+  var form = document.getElementById('lead-magnet-form');
 
+  if (form) {
+    // The form element exists, so we can attach the event listener
     form.addEventListener('submit', function (event) {
       // Get the form's action (redirect URL)
       var redirectUrl = form.getAttribute('custom-redirect');
@@ -181,4 +183,6 @@ wrappers.forEach((wrapper) => {
 
       // The form will be submitted as usual
     });
-  });
+  }
+});
+
