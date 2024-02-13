@@ -298,10 +298,10 @@ body.accent-club .projection-h3-wrapper:before,
 body.accent-club .projection-h3-wrapper:after{
   border-color: var(--salle-club);
 }
-body.accent-2 .projection-h3-wrapper, 
-body.accent-2 .projection-h3-wrapper:before, 
-body.accent-2 .projection-h3-wrapper:after{
-  border-color: var(--salle-3-accent);
+body.accent-2-infinite .projection-h3-wrapper, 
+body.accent-2-infinite .projection-h3-wrapper:before, 
+body.accent-2-infinite .projection-h3-wrapper:after{
+  border-color: var(--salle-2-accent);
 }
 body.accent-3 .projection-h3-wrapper, 
 body.accent-3 .projection-h3-wrapper:before, 
