@@ -159,13 +159,18 @@ wrappers.forEach((wrapper) => {
 // SCRIPT TO OPEN A NEW URL AFTER SUBMITTIMG FORM
 // =================
 
-document.addEventListener('DOMContentLoaded', function () {
-  // Check if the form element with ID "lead-magnet-form" exists
-  var form = document.getElementById('lead-magnet-form');
 
-  if (form) {
-    // The form element exists, so we can attach the event listener
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Get all elements with the class "pop-up-form"
+  var forms = document.querySelectorAll('.pop-up-form');
+
+  forms.forEach(function (form) {
+    // Attach event listener to each form
     form.addEventListener('submit', function (event) {
+      // Prevent the default form submission behavior
+      event.preventDefault();
+
       // Get the form's action (redirect URL)
       var redirectUrl = form.getAttribute('custom-redirect');
 
@@ -181,8 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
       //   body: new FormData(form),
       // });
 
-      // The form will be submitted as usual
+      // The form will not be submitted in the default way due to preventDefault()
     });
-  }
+  });
 });
-
