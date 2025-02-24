@@ -1,344 +1,94 @@
-/* ROTATING 360 */
-
-
-@-webkit-keyframes rotating360 /* Safari and Chrome */ {
-    from {
-      -webkit-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg);
-    }
-    to {
-      -webkit-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      transform: rotate(360deg);
-    }
-  }
-  @keyframes rotating360 {
-    from {
-      -ms-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-      -webkit-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg);
-    }
-    to {
-      -ms-transform: rotate(360deg);
-      -moz-transform: rotate(360deg);
-      -webkit-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      transform: rotate(360deg);
-    }
-  }
-
-  .main-cta:hover .sparkle-cta,
-  .sparkle-menu {
-    -webkit-animation: rotating360 3s linear infinite;
-    -moz-animation: rotating360 3s linear infinite;
-    -ms-animation: rotating360 3s linear infinite;
-    -o-animation: rotating360 3s linear infinite;
-    animation: rotating360 3s linear infinite;
-  }
-
-  .spiky-circle,
-  .salle-seprator-svg {
-    -webkit-animation: rotating360 30s linear infinite;
-    -moz-animation: rotating360 30s linear infinite;
-    -ms-animation: rotating360 30s linear infinite;
-    -o-animation: rotating360 30s linear infinite;
-    animation: rotating360 30s linear infinite;
-  }
-
-  .sparkle-contact {
-    -webkit-animation: rotating360 30s linear infinite;
-    -moz-animation: rotating360 30s linear infinite;
-    -ms-animation: rotating360 30s linear infinite;
-    -o-animation: rotating360 30s linear infinite;
-    animation: rotating360 30s linear infinite;
-  }
-
-  /* DROP SHADOW AROUND PLAY ICON */
-
-
-  .video-poster-wrapper .play-icon {
-    filter: drop-shadow(0px 0px 44px var(--accent));
-  }
-
-
-  /* MARQUEE ANIMATION */
-  @-webkit-keyframes marquee /* Safari and Chrome */ {
-      0% {
-        -webkit-transform: translateX(0);
-      }
-    100% {
-        -webkit-transform: translateX(-100%);
-    }
-  }
-  @keyframes marquee /* Safari and Chrome */ {
-      0% {
-        -webkit-transform: translateX(0);
-      }
-    100% {
-        -webkit-transform: translateX(-100%);
-    }
-  }
-  @-webkit-keyframes marquee-reverse /* Safari and Chrome */ {
-      0% {
-        -webkit-transform: translateX(-100%);
-      }
-    100% {
-        -webkit-transform: translateX(0%);
-    }
-  }
-  @keyframes marquee-reverse /* Safari and Chrome */ {
-      0% {
-        -webkit-transform: translateX(-100%);
-      }
-    100% {
-        -webkit-transform: translateX(0%);
-    }
-  }
-
-  .ribon-1 {
-    animation: marquee 30s infinite linear;
-    webkit-animation: marquee 30s infinite linear;
-  }
-  .ribon-1._2 {
-    animation: marquee-reverse 30s infinite linear;
-    webkit-animation: marquee-reverse 30s infinite linear;
-  }
-
-.logos-ribon-item-wrapper:first-child {
-  animation: marquee 30s infinite linear;
-  webkit-animation: marquee 30s infinite linear;
-}
-.logos-ribon-item-wrapper:last-child {
-  animation: marquee-reverse 30s infinite linear;
-  webkit-animation: marquee-reverse 30s infinite linear;
-}
-
-  .ribon-text {
-    text-shadow: .5px .5px 0 #fff, -0.5px -0.5px 0 #fff, 0.5px -0.5px 0 #fff, -0.5px .5px 0 #fff, .5px .5px 0 #fff;
-    color: #1D1B19!important;
-  }
-
-  .people-name {
-    text-shadow: .5px .5px 0 #fff, -0.5px -0.5px 0 #fff, 0.5px -0.5px 0 #fff, -0.5px .5px 0 #fff, .5px .5px 0 #fff;
-    color: #D0BFA5!important;
-  }
-
-
-
-  .event-txt ul {
-    list-style: none;
-    padding-left: 30px;
-    margin-bottom: 0;
-  }
-
-  .event-txt ul li {
-    position: relative;
-    margin-bottom: 0.3em;
-  }
-
-  .event-txt ul li::last-child {
-    margin-bottom: 0;
-  }
-
-  .event-txt ul li::before {
-    content: '';
-    position: absolute;
-    left: -30px;
-    top: 1px;
-    width: 1em;
-    height: 1em;
-    background-repeat: no-repeat;
-    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 28.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0 --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 19 14' style='enable-background:new 0 0 19 14;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%23FFFFFF;%7D%0A%3C/style%3E%3Cpath class='st0' d='M7.2,8.8l8.6-8.5c0.4-0.4,1-0.4,1.5,0l1.5,1.4c0.4,0.4,0.4,1,0,1.4L8,13.7c-0.4,0.4-1,0.4-1.4,0L0.3,7.9 c-0.4-0.4-0.4-1,0-1.4l1.4-1.4c0.4-0.4,1-0.4,1.5,0L7.2,8.8z'/%3E%3C/svg%3E%0A");
-}
-
-
-
-.people-wrapper.not-placed {
+.hero_bullet_svg:nth-of-type(2) {
   opacity: 0;
 }
 
-.people-wrapper {
-  position: absolute;
-  margin: 2px;
-  /* border: 1px solid black; */
-  font-size: xx-large;
-  top: 0px;
-  left: 0px;
-  /* opacity: 0; */
+/* ==============================
+ALL TRANSITIONS 
+============================== */
+
+.video_cta_wrap {
+  transition: background 150ms ease;
 }
 
-/* .people-wrapper.placed {
-  opacity: 1;
-} */
-
-.people-name {
-  max-width: min-content;
+.navbar_logo_svg_wrap {
+  transition: color 150ms ease;
 }
 
-.people-img {
-  animation: blink 1s infinite alternate;
-  /* Vendor-prefixed syntax for older browsers */
-  -webkit-animation: blink 1s infinite alternate;
-  -moz-animation: blink 1s infinite alternate;
-  -o-animation: blink 1s infinite alternate;
+..video_fixed_close_button {
+  transition: transform 150ms ease;
 }
 
-@keyframes blink {
-  0% {
-      opacity: 1;
-  }
-  49% {
-    opacity: 1;
-  }
-  50% { 
-    opacity: 0
-  }
-  100% {
-      opacity: 0;
-  }
+.navbar_line {
+  transition: width 150ms ease;
 }
 
 
-.timeline-progress-active {
-  bottom: calc(50vh - 20px);
- 
+.video_cta_wrap:hover {
+  background: var(--accent);
 }
 
-.form-h3-wrapper:before, .form-h3-wrapper:after {
-  border: 1px solid var(--champagne);
-}
-
-.form-h3-wrapper:before, .form-h3-wrapper:after {
-  content: "";
-  position: absolute;  
-}
-
-.form-h3-wrapper:before {
-  top: -8px;
-  right: 5px;
-  bottom: -8px;
-  left: 5px;
-}
-
-.form-h3-wrapper:after {
-  top: 5px;
-  right: -8px;
-  bottom: 5px;
-  left: -8px;
-}
-
-.radio-btn-field .w--redirected-checked + .w-form-label {
-  opacity: 1;
-}
-
-input:focus{
-  outline:none;
-  outline-width: 0;
-  box-shadow: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-}
-
-.w-input[readonly],
-.flatpickr-input[readonly] {
-  background-color: inherit;
-  cursor: inherit;
+*[data-bg-color="dark-textured"] {
+  background-image: linear-gradient(#1d1b19f7, #1d1b19f7), url(https://cdn.prod.website-files.com/653638b…/653681d…_faded-background-v7.png);
+  background-position: 0 0, 0 0;
+  background-repeat: repeat, repeat;
+  background-size: auto, 200px;
 }
 
 
+/* ==============================
+NAVBAR LINK
+============================== */
+.navbar_link_item_wrap:hover .navbar_line {
+  width: 100%;
+} 
 
-.projection-h3-wrapper:before, .projection-h3-wrapper:after {
-  border: 1px solid;
-}
+/* ==============================
+VIDEO FULLSCREEN
+============================== */
 
-.projection-h3-wrapper:before, .projection-h3-wrapper:after {
-  content: "";
-  position: absolute;  
-}
-
-.projection-h3-wrapper:before {
-  top: -5px;
-  right: 2px;
-  bottom: -5px;
-  left: 2px;
+.video_fixed_close_button:hover {
+  transform: scale(1.1);
 }
 
-.projection-h3-wrapper:after {
-  top: 2px;
-  right: -5px;
-  bottom: 2px;
-  left: -5px;
-}
+/* ==============================
+VIDEO FULLSCREEN
+============================== */
 
-
-
-
-.slider-salle .w-slider-arrow-left, 
-.slider-salle .w-slider-arrow-right {
-  color: inherit;
-}
-
-/* COLORS FOR THE ROOMS */
-
-body.accent-grande .projection-h3-wrapper, 
-body.accent-grande .projection-h3-wrapper:before, 
-body.accent-grande .projection-h3-wrapper:after{
-  border-color: var(--salle-grande);
-}
-body.accent-hall .projection-h3-wrapper, 
-body.accent-hall .projection-h3-wrapper:before, 
-body.accent-hall .projection-h3-wrapper:after{
-  border-color: var(--salle-hall);
-}
-body.accent-club .projection-h3-wrapper, 
-body.accent-club .projection-h3-wrapper:before, 
-body.accent-club .projection-h3-wrapper:after{
-  border-color: var(--salle-club);
-}
-body.accent-2-infinite .projection-h3-wrapper, 
-body.accent-2-infinite .projection-h3-wrapper:before, 
-body.accent-2-infinite .projection-h3-wrapper:after{
-  border-color: var(--salle-2-accent);
-}
-body.accent-3 .projection-h3-wrapper, 
-body.accent-3 .projection-h3-wrapper:before, 
-body.accent-3 .projection-h3-wrapper:after{
-  border-color: var(--salle-3-accent);
-}
-body.accent-4 .projection-h3-wrapper, 
-body.accent-4 .projection-h3-wrapper:before, 
-body.accent-4 .projection-h3-wrapper:after{
-  border-color: var(--salle-4-accent);
-}
-body.accent-5 .projection-h3-wrapper, 
-body.accent-5 .projection-h3-wrapper:before, 
-body.accent-5 .projection-h3-wrapper:after{
-  border-color: var(--salle-5-accent);
-}
-body.accent-6 .projection-h3-wrapper, 
-body.accent-6 .projection-h3-wrapper:before, 
-body.accent-6 .projection-h3-wrapper:after{
-  border-color: var(--salle-6-accent);
-}
-body.accent-7 .projection-h3-wrapper, 
-body.accent-7 .projection-h3-wrapper:before, 
-body.accent-7 .projection-h3-wrapper:after{
-  border-color: var(--salle-7-accent);
-}
-body.accent-main .projection-h3-wrapper, 
-body.accent-main .projection-h3-wrapper:before, 
-body.accent-main .projection-h3-wrapper:after{
-  border-color: var(--salle-main-accent);
+/* SMALLER than XX pixels */
+@media only screen and (max-width: 767px) {
+  .event_pastille_collection_item:nth-child(even) div:not(.event_pastille_img_wrap) {
+      order: 2;
+  }    
+  .event_pastille_collection_item:nth-child(even) .event_pastille_wrap {
+      padding: 0 1.5rem 0 0;
+  }    
+  
 }
 
 
-.section-video .video-embed {
-  padding-top: 0!important;
+/* ==============================
+RIBBON SECTION EVENTS
+============================== */
+
+.section-events .collection-item-event:first-child .ribon-wrapper {
+  display: none;
 }
 
-.lottie-spikes {
-  pointer-events: none;
+.navbar_line[current-page="true"] {
+  width: 100%;
+}
+
+
+/* ==============================
+RIBBON SECTION EVENTS
+============================== */
+
+.section-contacts[data-contact-display="none"] .contact-line, 
+.section-contacts[data-contact-display="none"] .contact-bullet-wrapper {
+  display: none;
+}
+
+
+.section-contacts[data-contact-display="none"] .padding-v {
+  padding: 0 0 8rem 0;    
 }
