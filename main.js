@@ -436,50 +436,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const forms = document.querySelectorAll('form.pop-up-form');
   console.log('[POPUP DEBUG] Forms found:', forms.length);
+  forms.forEach((f, i) => console.log(`[POPUP DEBUG] Form #${i} custom-redirect:`, f.getAttribute('custom-redirect')));
 
-  if (forms.length === 0) {
-    console.warn('[POPUP DEBUG] No forms with class .pop-up-form found');
-    return;
-  }
+  // Event delegation: captures clicks on any submit button, even if forms are duplicated/hidden/etc.
+  document.addEventListener('click', (e) => {
+    const submitBtn = e.target.closest('form.pop-up-form [type="submit"]');
+    if (!submitBtn) return;
 
-  forms.forEach((form, index) => {
-    console.log(`[POPUP DEBUG] Initializing form #${index}`, form);
+    const form = submitBtn.closest('form.pop-up-form');
+    console.log('[POPUP DEBUG] Submit clicked. Button:', submitBtn);
+    console.log('[POPUP DEBUG] Resolved parent form:', form);
 
-    const btn = form.querySelector('[type="submit"]');
+    const redirectUrl = form.getAttribute('custom-redirect');
+    console.log('[POPUP DEBUG] custom-redirect value:', redirectUrl);
 
-    if (!btn) {
-      console.warn(`[POPUP DEBUG] No submit button found in form #${index}`);
+    if (!redirectUrl) {
+      console.warn('[POPUP DEBUG] No custom-redirect attribute on this form. Aborting.');
       return;
     }
 
-    console.log(`[POPUP DEBUG] Submit button found in form #${index}`, btn);
+    console.log('[POPUP DEBUG] Opening in new tab:', redirectUrl);
+    const newWindow = window.open(redirectUrl, '_blank');
 
-    btn.addEventListener('click', (event) => {
-      console.log(`[POPUP DEBUG] Submit button clicked in form #${index}`);
-
-      const redirectUrl = form.getAttribute('custom-redirect');
-      console.log(`[POPUP DEBUG] custom-redirect attribute value:`, redirectUrl);
-
-      if (!redirectUrl) {
-        console.warn(`[POPUP DEBUG] No custom-redirect attribute found on form #${index}`);
-        return;
-      }
-
-      console.log(`[POPUP DEBUG] Opening redirect URL in new tab:`, redirectUrl);
-
-      const newWindow = window.open(redirectUrl, '_blank');
-
-      if (!newWindow) {
-        console.error('[POPUP DEBUG] Popup blocked by browser!');
-      } else {
-        console.log('[POPUP DEBUG] Popup successfully opened');
-      }
-    });
-
-    form.addEventListener('submit', () => {
-      console.log(`[POPUP DEBUG] Form submit event fired for form #${index}`);
-    });
+    if (!newWindow) {
+      console.error('[POPUP DEBUG] Popup blocked by browser!');
+    } else {
+      console.log('[POPUP DEBUG] Popup successfully opened');
+    }
   });
+
+  // Optional: submit logging
+  document.addEventListener('submit', (e) => {
+    const form = e.target.closest('form.pop-up-form');
+    if (!form) return;
+    console.log('[POPUP DEBUG] Submit event fired for form:', form);
+    console.log('[POPUP DEBUG] Submit form custom-redirect:', form.getAttribute('custom-redirect'));
+  }, true);
 
   console.log('[POPUP DEBUG] Initialization complete');
 });
