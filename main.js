@@ -431,35 +431,59 @@ wrappers.forEach((wrapper) => {
 // SCRIPT TO OPEN A NEW URL AFTER SUBMITTIMG FORM
 // =================
 
-document.addEventListener('DOMContentLoaded', function () {
-  // Get all elements with the class "pop-up-form"
-  var forms = document.querySelectorAll('.pop-up-form');
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('[POPUP DEBUG] DOM fully loaded');
 
-  forms.forEach(function (form) {
-    // Attach event listener to each form
-    form.addEventListener('submit', function (event) {
-      // Prevent the default form submission behavior
-      event.preventDefault();
+  const forms = document.querySelectorAll('form.pop-up-form');
+  console.log('[POPUP DEBUG] Forms found:', forms.length);
 
-      // Get the form's action (redirect URL)
-      var redirectUrl = form.getAttribute('custom-redirect');
+  if (forms.length === 0) {
+    console.warn('[POPUP DEBUG] No forms with class .pop-up-form found');
+    return;
+  }
 
-      // Open the redirect URL in a new tab after a slight delay to allow the form to be submitted
-      setTimeout(function () {
-        window.open(redirectUrl, '_blank');
-      }, 2000); // Adjust the delay as needed (in milliseconds)
+  forms.forEach((form, index) => {
+    console.log(`[POPUP DEBUG] Initializing form #${index}`, form);
 
-      // Optionally, you can submit the form data asynchronously if needed
-      // Example using fetch API:
-      // fetch(form.getAttribute('action'), {
-      //   method: form.getAttribute('method'),
-      //   body: new FormData(form),
-      // });
+    const btn = form.querySelector('[type="submit"]');
 
-      // The form will not be submitted in the default way due to preventDefault()
+    if (!btn) {
+      console.warn(`[POPUP DEBUG] No submit button found in form #${index}`);
+      return;
+    }
+
+    console.log(`[POPUP DEBUG] Submit button found in form #${index}`, btn);
+
+    btn.addEventListener('click', (event) => {
+      console.log(`[POPUP DEBUG] Submit button clicked in form #${index}`);
+
+      const redirectUrl = form.getAttribute('custom-redirect');
+      console.log(`[POPUP DEBUG] custom-redirect attribute value:`, redirectUrl);
+
+      if (!redirectUrl) {
+        console.warn(`[POPUP DEBUG] No custom-redirect attribute found on form #${index}`);
+        return;
+      }
+
+      console.log(`[POPUP DEBUG] Opening redirect URL in new tab:`, redirectUrl);
+
+      const newWindow = window.open(redirectUrl, '_blank');
+
+      if (!newWindow) {
+        console.error('[POPUP DEBUG] Popup blocked by browser!');
+      } else {
+        console.log('[POPUP DEBUG] Popup successfully opened');
+      }
+    });
+
+    form.addEventListener('submit', () => {
+      console.log(`[POPUP DEBUG] Form submit event fired for form #${index}`);
     });
   });
+
+  console.log('[POPUP DEBUG] Initialization complete');
 });
+
 
 // =================
 // SCROLL TRIGGER NOS ESPACES ITEM
