@@ -483,86 +483,79 @@ wrappers.forEach((wrapper) => {
 // Key idea: scope to the section the user interacted with + use the visible form.
 // ==============================
 
+// =======================================
+// LEAD MAGNET POPUP (GSAP SCOPED PER SECTION)
+// =======================================
+
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("[POPUP DEBUG] DOM fully loaded");
+  if (!window.gsap) {
+    console.error("[LEAD MAGNET] GSAP not found");
+    return;
+  }
 
-  const allForms = document.querySelectorAll("form.pop-up-form");
-  console.log("[POPUP DEBUG] Forms found:", allForms.length);
-  allForms.forEach((f, i) =>
-    console.log(
-      `[POPUP DEBUG] Form #${i} custom-redirect:`,
-      f.getAttribute("custom-redirect")
-    )
-  );
+  const sections = document.querySelectorAll(".section-lead-magnet");
+  console.log("[LEAD MAGNET] Sections found:", sections.length);
 
-  // Helper: "visible" means not display:none and not detached from layout
-  const isVisible = (el) => !!(el && el.offsetParent !== null);
+  sections.forEach((section, index) => {
+    console.log(`[LEAD MAGNET] Init section #${index}`);
 
-  // Capture submit button clicks
-  document.addEventListener("click", (e) => {
-    const submitBtn = e.target.closest(
-      '.section-lead-magnet form.pop-up-form [type="submit"]'
-    );
-    if (!submitBtn) return;
+    const outer = section.querySelector(".pop-up-lead-outer-wrapper");
+    const inner = section.querySelector(".pop-up-lead-inner-wrapper");
+    const cta = section.querySelector("a.main-cta");
+    const form = section.querySelector("form.pop-up-form");
 
-    // Scope to the SECTION the user is interacting with (prevents cross-wiring)
-    const section = submitBtn.closest(".section-lead-magnet");
-    if (!section) {
-      console.warn("[POPUP DEBUG] No parent .section-lead-magnet found. Aborting.");
+    if (!outer || !inner || !cta || !form) {
+      console.warn(`[LEAD MAGNET] Missing elements in section #${index}`);
       return;
     }
 
-    // Within that section, find the correct form:
-    // 1) prefer the visible/open one
-    // 2) fallback to the first one in that section
-    const sectionForms = Array.from(section.querySelectorAll("form.pop-up-form"));
-    const form = sectionForms.find(isVisible) || sectionForms[0];
+    // Initial state
+    gsap.set(outer, { display: "none" });
 
-    console.log("[POPUP DEBUG] Submit clicked. Button:", submitBtn);
-    console.log("[POPUP DEBUG] Resolved section:", section);
-    console.log("[POPUP DEBUG] Forms in this section:", sectionForms.length);
-    console.log("[POPUP DEBUG] Resolved form (scoped + visible):", form);
+    // Timeline
+    const tl = gsap.timeline({
+      paused: true,
+      defaults: { ease: "power3.out", duration: 0.6 }
+    });
 
-    if (!form) {
-      console.warn("[POPUP DEBUG] No form found in this section. Aborting.");
-      return;
-    }
+    tl.set(outer, { display: "flex" })
+      .from(inner, {
+        opacity: 0,
+        y: 200
+      });
 
-    const redirectUrl = form.getAttribute("custom-redirect");
-    console.log("[POPUP DEBUG] custom-redirect value:", redirectUrl);
+    // OPEN
+    cta.addEventListener("click", (e) => {
+      e.preventDefault();
+      console.log(`[LEAD MAGNET] Open section #${index}`);
+      tl.play();
+    });
 
-    if (!redirectUrl) {
-      console.warn("[POPUP DEBUG] No custom-redirect attribute on this form. Aborting.");
-      return;
-    }
+    // CLOSE (any element with data-action="close-form")
+    section.querySelectorAll('[data-action="close-form"]').forEach(btn => {
+      btn.addEventListener("click", () => {
+        console.log(`[LEAD MAGNET] Close section #${index}`);
+        tl.reverse();
+      });
+    });
 
-    console.log("[POPUP DEBUG] Opening in new tab:", redirectUrl);
-    const newWindow = window.open(redirectUrl, "_blank");
+    // When reverse completes → hide outer
+    tl.eventCallback("onReverseComplete", () => {
+      gsap.set(outer, { display: "none" });
+    });
 
-    if (!newWindow) {
-      console.error("[POPUP DEBUG] Popup blocked by browser!");
-    } else {
-      console.log("[POPUP DEBUG] Popup successfully opened");
-    }
+    // SUBMIT → redirect
+    form.addEventListener("submit", () => {
+      const redirectUrl = form.getAttribute("custom-redirect");
+      console.log(`[LEAD MAGNET] Submit section #${index}`, redirectUrl);
+
+      if (redirectUrl) {
+        window.open(redirectUrl, "_blank");
+      }
+    });
   });
 
-  // Optional: submit logging (still useful for debugging Webflow behavior)
-  document.addEventListener(
-    "submit",
-    (e) => {
-      const form = e.target.closest("form.pop-up-form");
-      if (!form) return;
-
-      console.log("[POPUP DEBUG] Submit event fired for form:", form);
-      console.log(
-        "[POPUP DEBUG] Submit form custom-redirect:",
-        form.getAttribute("custom-redirect")
-      );
-    },
-    true
-  );
-
-  console.log("[POPUP DEBUG] Initialization complete");
+  console.log("[LEAD MAGNET] Ready");
 });
 
 
