@@ -515,7 +515,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Timeline
     const tl = gsap.timeline({
       paused: true,
-      defaults: { ease: "power3.out", duration: 0.6 }
+      defaults: { ease: "power3.out", duration: 0.2 }
     });
 
     tl.set(outer, { display: "flex" })
