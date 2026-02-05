@@ -431,49 +431,138 @@ wrappers.forEach((wrapper) => {
 // SCRIPT TO OPEN A NEW URL AFTER SUBMITTIMG FORM
 // =================
 
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('[POPUP DEBUG] DOM fully loaded');
+// document.addEventListener('DOMContentLoaded', () => {
+//   console.log('[POPUP DEBUG] DOM fully loaded');
 
-  const forms = document.querySelectorAll('form.pop-up-form');
-  console.log('[POPUP DEBUG] Forms found:', forms.length);
-  forms.forEach((f, i) => console.log(`[POPUP DEBUG] Form #${i} custom-redirect:`, f.getAttribute('custom-redirect')));
+//   const forms = document.querySelectorAll('form.pop-up-form');
+//   console.log('[POPUP DEBUG] Forms found:', forms.length);
+//   forms.forEach((f, i) => console.log(`[POPUP DEBUG] Form #${i} custom-redirect:`, f.getAttribute('custom-redirect')));
 
-  // Event delegation: captures clicks on any submit button, even if forms are duplicated/hidden/etc.
-  document.addEventListener('click', (e) => {
-    const submitBtn = e.target.closest('form.pop-up-form [type="submit"]');
+//   // Event delegation: captures clicks on any submit button, even if forms are duplicated/hidden/etc.
+//   document.addEventListener('click', (e) => {
+//     const submitBtn = e.target.closest('form.pop-up-form [type="submit"]');
+//     if (!submitBtn) return;
+
+//     const form = submitBtn.closest('form.pop-up-form');
+//     console.log('[POPUP DEBUG] Submit clicked. Button:', submitBtn);
+//     console.log('[POPUP DEBUG] Resolved parent form:', form);
+
+//     const redirectUrl = form.getAttribute('custom-redirect');
+//     console.log('[POPUP DEBUG] custom-redirect value:', redirectUrl);
+
+//     if (!redirectUrl) {
+//       console.warn('[POPUP DEBUG] No custom-redirect attribute on this form. Aborting.');
+//       return;
+//     }
+
+//     console.log('[POPUP DEBUG] Opening in new tab:', redirectUrl);
+//     const newWindow = window.open(redirectUrl, '_blank');
+
+//     if (!newWindow) {
+//       console.error('[POPUP DEBUG] Popup blocked by browser!');
+//     } else {
+//       console.log('[POPUP DEBUG] Popup successfully opened');
+//     }
+//   });
+
+//   // Optional: submit logging
+//   document.addEventListener('submit', (e) => {
+//     const form = e.target.closest('form.pop-up-form');
+//     if (!form) return;
+//     console.log('[POPUP DEBUG] Submit event fired for form:', form);
+//     console.log('[POPUP DEBUG] Submit form custom-redirect:', form.getAttribute('custom-redirect'));
+//   }, true);
+
+//   console.log('[POPUP DEBUG] Initialization complete');
+// });
+
+
+// ==============================
+// OPEN A NEW URL (custom-redirect) IN A NEW TAB ON SUBMIT
+// Works even when the same "lead magnet" section is duplicated on the page.
+// Key idea: scope to the section the user interacted with + use the visible form.
+// ==============================
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("[POPUP DEBUG] DOM fully loaded");
+
+  const allForms = document.querySelectorAll("form.pop-up-form");
+  console.log("[POPUP DEBUG] Forms found:", allForms.length);
+  allForms.forEach((f, i) =>
+    console.log(
+      `[POPUP DEBUG] Form #${i} custom-redirect:`,
+      f.getAttribute("custom-redirect")
+    )
+  );
+
+  // Helper: "visible" means not display:none and not detached from layout
+  const isVisible = (el) => !!(el && el.offsetParent !== null);
+
+  // Capture submit button clicks
+  document.addEventListener("click", (e) => {
+    const submitBtn = e.target.closest(
+      '.section-lead-magnet form.pop-up-form [type="submit"]'
+    );
     if (!submitBtn) return;
 
-    const form = submitBtn.closest('form.pop-up-form');
-    console.log('[POPUP DEBUG] Submit clicked. Button:', submitBtn);
-    console.log('[POPUP DEBUG] Resolved parent form:', form);
-
-    const redirectUrl = form.getAttribute('custom-redirect');
-    console.log('[POPUP DEBUG] custom-redirect value:', redirectUrl);
-
-    if (!redirectUrl) {
-      console.warn('[POPUP DEBUG] No custom-redirect attribute on this form. Aborting.');
+    // Scope to the SECTION the user is interacting with (prevents cross-wiring)
+    const section = submitBtn.closest(".section-lead-magnet");
+    if (!section) {
+      console.warn("[POPUP DEBUG] No parent .section-lead-magnet found. Aborting.");
       return;
     }
 
-    console.log('[POPUP DEBUG] Opening in new tab:', redirectUrl);
-    const newWindow = window.open(redirectUrl, '_blank');
+    // Within that section, find the correct form:
+    // 1) prefer the visible/open one
+    // 2) fallback to the first one in that section
+    const sectionForms = Array.from(section.querySelectorAll("form.pop-up-form"));
+    const form = sectionForms.find(isVisible) || sectionForms[0];
+
+    console.log("[POPUP DEBUG] Submit clicked. Button:", submitBtn);
+    console.log("[POPUP DEBUG] Resolved section:", section);
+    console.log("[POPUP DEBUG] Forms in this section:", sectionForms.length);
+    console.log("[POPUP DEBUG] Resolved form (scoped + visible):", form);
+
+    if (!form) {
+      console.warn("[POPUP DEBUG] No form found in this section. Aborting.");
+      return;
+    }
+
+    const redirectUrl = form.getAttribute("custom-redirect");
+    console.log("[POPUP DEBUG] custom-redirect value:", redirectUrl);
+
+    if (!redirectUrl) {
+      console.warn("[POPUP DEBUG] No custom-redirect attribute on this form. Aborting.");
+      return;
+    }
+
+    console.log("[POPUP DEBUG] Opening in new tab:", redirectUrl);
+    const newWindow = window.open(redirectUrl, "_blank");
 
     if (!newWindow) {
-      console.error('[POPUP DEBUG] Popup blocked by browser!');
+      console.error("[POPUP DEBUG] Popup blocked by browser!");
     } else {
-      console.log('[POPUP DEBUG] Popup successfully opened');
+      console.log("[POPUP DEBUG] Popup successfully opened");
     }
   });
 
-  // Optional: submit logging
-  document.addEventListener('submit', (e) => {
-    const form = e.target.closest('form.pop-up-form');
-    if (!form) return;
-    console.log('[POPUP DEBUG] Submit event fired for form:', form);
-    console.log('[POPUP DEBUG] Submit form custom-redirect:', form.getAttribute('custom-redirect'));
-  }, true);
+  // Optional: submit logging (still useful for debugging Webflow behavior)
+  document.addEventListener(
+    "submit",
+    (e) => {
+      const form = e.target.closest("form.pop-up-form");
+      if (!form) return;
 
-  console.log('[POPUP DEBUG] Initialization complete');
+      console.log("[POPUP DEBUG] Submit event fired for form:", form);
+      console.log(
+        "[POPUP DEBUG] Submit form custom-redirect:",
+        form.getAttribute("custom-redirect")
+      );
+    },
+    true
+  );
+
+  console.log("[POPUP DEBUG] Initialization complete");
 });
 
 
